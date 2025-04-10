@@ -8,20 +8,17 @@ This project analyzes public sentiment before and after major promotional events
 ## 📁 Project Structure
 
 ```plaintext
-project/
+streaming-sentiment-tracker/
 │
-├── data/
-│   ├── raw/              # Raw scraped data (e.g., ahsoka_youtube_comments.csv)
-│   └── processed/        # Cleaned and labeled data ready for modeling
+├── Notebooks/
+│   ├── SSSmodel.ipynb              # Sentiment modeling, topic modeling, and forecasting
+│   └── ScrapingandSentiment.ipynb  # (Uploaded via GitHub Web) Reddit/YouTube scraping + LSTM labeling
 │
-├── notebooks/
-│   ├── ScrapingandSentiment.ipynb    # YouTube + Reddit scraping, cleaning + VADER labeling
-│   └── SSSmodel.ipynb                # Sentiment modeling (LogReg, RF, LSTM), LDA, and show-level forecasting
+├── Utils/
+│   └── cleaning.py                 # Custom text preprocessing functions for sentiment & LDA
 │
-├── utils/
-│   └── cleaning.py       # Custom text preprocessing functions
-│
-└── README.md             # Project overview and structure
+├── README.md                       # Project overview and results summary
+├── .gitignore                      # Excludes models, large assets, and raw data
 
 ---
 
