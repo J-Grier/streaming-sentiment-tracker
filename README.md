@@ -41,13 +41,3 @@ A simple logistic regression model trained on *Velma* and *The Bear S3* correctl
 **Future work** could include integrating VADER to provide an additional layer of emotional tone intensity.
 
 ---
-
-### 🎨 Sentiment-Filtered Word Clouds
-
-These word clouds show the most common words in positive and negative Reddit comments, as classified by our LSTM model.
-
-![TLOU S2 — Positive Comments](Assets/WordClouds/last_of_us_s2_wordcloud_positive.png)
-<sub><i>Positive comments for *The Last of Us S2* highlight character names, anticipation, and emotional resonance.</i></sub>
-
-![Velma — Negative Comments](Assets/WordClouds/velma_wordcloud_negative.png)
-<sub><i>Negative comments about *Velma* reflect backlash, moderation complaints, and confusion around tone and characterization.</i></sub>
