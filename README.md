@@ -1,56 +1,108 @@
-# Streaming Sentiment Tracker 🎬  
-**NLP Sentiment Analysis of Fan Engagement Across Streaming Platforms**
+# 🎬 Streaming Sentiment Tracker: Predicting Audience Reception
 
-This project leverages advanced natural language processing (NLP) techniques to predict audience sentiment and overall reception of streaming shows. By analyzing social media and streaming platforms, specifically Reddit and YouTube, the tracker delivers insights on audience engagement and reception, providing strategic recommendations for content creators and marketers.The goal is to understand how hype builds, which platforms drive the most engagement, and whether early sentiment predicts future success.
+## 📈 Overview
+This project leverages advanced natural language processing (NLP) and deep learning techniques to analyze public sentiment toward streaming TV series. By processing user comments from YouTube and Reddit, the model predicts audience reception and provides actionable insights into both audience sentiment (positive, negative, neutral) and the underlying themes driving public discussion.
+
+---
+
+## 🎯 Objectives
+- **Primary Goal**: Predict and analyze audience sentiment toward streaming shows.
+- **Actionable Insights**: Provide strategic insights for content creators and marketers based on predicted audience reactions and thematic analysis.
 
 ---
 
-## Objectives
+## 🛠️ Methodology
 
-**Primary Goal**: To accurately forecast the public reception of streaming TV series using sentiment analysis and topic modeling.
+The analysis employed a layered modeling approach combining sentiment analysis and topic modeling:
 
-**Actionable Insights**: Provide strategic insights that inform content development, marketing strategies, and audience engagement.
+### Data Collection
+- Collected YouTube and Reddit comments covering released, ongoing, and upcoming streaming series.
+- Focused collection windows tailored to show release schedules.
+
+### Sentiment Analysis (VADER & LSTM)
+- **VADER** provided baseline sentiment scoring (positive, neutral, negative) suitable for aggregate-level insights.
+- **LSTM (Bidirectional)** improved context-aware sentiment predictions, capturing nuances missed by simpler models (e.g., sarcasm, negation, multi-part sentiment).
+
+### Topic Modeling (LDA)
+- Extracted interpretable themes from discussions, revealing the underlying topics driving sentiment reactions.
 
 ---
-## Approach
 
-Several NLP methods were integrated to effectively capture and analyze sentiment:
+## 📊 Model Pipeline Summary
+1. **Preprocessing**
+   - Cleaned and tokenized Reddit and YouTube comments.
+   - Generated sentiment scores using VADER and LSTM models.
+   - Computed topic distributions using LDA.
+   
+2. **Feature Engineering**
+   - Created comprehensive feature sets from sentiment proportions and topic distributions.
 
-**Logistic Regression and Random Forest Classifiers**: Established baseline models using TF-IDF vectorization, highlighting initial challenges with nuanced sentiment.
+3. **Final Reception Prediction**
+   - Used Logistic Regression to predict show success based on Rotten Tomatoes audience scores.
 
--**Sentiment Analysis (Bidirectional LSTM)**: Implemented a deep learning model with trainable embeddings (FastText and Emoji2Vec), significantly outperforming traditional methods (accuracy improved from ~82.3% baseline to 85.0%). Notably, the LSTM model consistently outperformed VADER, providing greater accuracy on human-labeled datasets.
+---
 
--**Topic Modeling (Latent Dirichlet Allocation)**: Applied to identify key discussion themes and context, allowing us to link specific sentiment reactions to clear topical clusters.
+## 🔑 Key Findings
 
-By pairing:
+### 🚀 Sentiment Model Performance
+| Model                            | Accuracy      | Strengths                                   | Weaknesses                   |
+|----------------------------------|---------------|---------------------------------------------|------------------------------|
+| Logistic Regression (TF-IDF)     | ~82.3%        | Strong baseline                             | Struggles with context       |
+| Random Forest                    | ~76.8%        | Captures nonlinearities                     | Overfits nuances             |
+| Vanilla LSTM                     | ~83.5%        | Improved context handling                   | Neutral sentiment precision  |
+| **Bidirectional LSTM (Final)**   | **85.0%** 🚀  | Best overall; nuanced context capture       | Slightly underpredicts neutral |
 
--**LSTM** for text-level precision,
+### 🧪 Topic Modeling Insights (LDA)
+- Identified specific topics driving audience sentiment (e.g., character arcs, social issues).
+- Clarified reasons behind positive or negative sentiment for specific shows like *Velma* and *The Bear*.
 
--**LDA** to understand topic context,
+### 🎯 Final Reception Model
+- Accurately predicted *Velma* as a flop and *The Bear Season 3* as a success, achieving ~91% confidence.
+- Successfully generalized to predict *The Last of Us Season 2* as a success with high confidence.
 
-the project created a multi-layered sentiment engine that clearly defines audience sentiment and contextualizes their reactions effectively.
+---
+## 🧠 Why Bidirectional LSTM?
 
-## Key Findings
+Bidirectional LSTMs process text forwards and backwards, effectively capturing nuanced sentiments often missed by simpler models:
 
--**Advanced Sentiment Prediction**: The Bidirectional LSTM provided superior classification accuracy, significantly outperforming baseline models and traditional VADER approaches.
+$$
+\begin{aligned}
+f_t &= \sigma(W_f \cdot [h_{t-1}, x_t] + b_f) \\
+i_t &= \sigma(W_i \cdot [h_{t-1}, x_t] + b_i) \\
+\tilde{c}_t &= \tanh(W_c \cdot [h_{t-1}, x_t] + b_c) \\
+c_t &= f_t \cdot c_{t-1} + i_t \cdot \tilde{c}_t \\
+o_t &= \sigma(W_o \cdot [h_{t-1}, x_t] + b_o) \\
+h_t &= o_t \cdot \tanh(c_t)
+\end{aligned}
+$$
 
--**Distinct Audience Segments**: Clearly identified audience reactions and thematic differences, enabling targeted marketing and content strategies.-
+This mathematical structure allows the model to dynamically interpret complex sentiments, making it particularly effective for analyzing nuanced and long-form user-generated content.
 
--**Contextual Understanding through Topic Modeling**: LDA revealed specific topics driving both positive and negative audience engagement, enriching sentiment insights.
+## ✅ Conclusion and Practical Impact
+By combining sentiment analysis (VADER & LSTM) and topic modeling (LDA), this project demonstrates how nuanced analysis of online discourse can accurately forecast audience reception. This layered sentiment engine provides actionable insights for content creators, marketers, and platforms seeking to anticipate and respond to audience sentiment proactively.
 
-## Impact and Applications
+## 🚧 Limitations and Future Directions
 
--**Strategic Content Decisions**: Empowers content creators and marketers to proactively tailor content and campaigns based on predicted audience reception.
+### Limitations:
+-Short-form and sarcastic comments present challenges.
+-Model currently trained on limited labeled examples, limiting generalizability.
 
--**Enhanced Audience Targeting**: Clarifies viewer preferences, enabling more effective targeting and engagement strategies.
+### Future Work:
 
--**Risk Mitigation**: Offers predictive insights to proactively address potential negative audience reactions.
+| Idea                           | Goal                                              |
+|--------------------------------|---------------------------------------------------|
+| Add VADER as additional layer  | Enhance emotional tone calibration                |
+| Incorporate YouTube extensively| Better sentiment detection for polarizing content |
+| Extend labeled datasets        | Improve model generalization                      |
+| Include time-series modeling   | Capture sentiment shifts over episode releases    |
 
-## Limitations and Future Directions
+## 🔖 References
 
--**Platform Limitations**: Reddit and YouTube data may miss sentiments expressed on other platforms (e.g., Twitter, Instagram).
-
--**Potential Model Enhancements**: Integrating more diverse data sources and leveraging additional deep learning architectures could further enhance predictive accuracy and context sensitivity.
+- [VADER Sentiment Analysis](https://github.com/cjhutto/vaderSentiment)
+- [LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+- [LDA Topic Modeling](https://radimrehurek.com/gensim/models/ldamodel.html)
+- [Reddit](https://reddit.com)
+- [YouTube](https://youtube.com)
 
 ---
 ## Author
@@ -73,3 +125,4 @@ streaming-sentiment-tracker/
 │
 ├── README.md                       # Project overview and results summary
 ├── .gitignore                      # Excludes models, large assets, and raw data
+```
