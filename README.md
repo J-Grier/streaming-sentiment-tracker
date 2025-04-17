@@ -5,23 +5,6 @@ This project analyzes public sentiment before and after major promotional events
 
 ---
 
-## 📁 Project Structure
-
-```plaintext
-streaming-sentiment-tracker/
-│
-├── Notebooks/
-│   ├── SSSmodel.ipynb              # Sentiment modeling, topic modeling, and forecasting
-│   └── ScrapingandSentiment.ipynb  # (Uploaded via GitHub Web) Reddit/YouTube scraping + LSTM labeling
-│
-├── Utils/
-│   └── cleaning.py                 # Custom text preprocessing functions for sentiment & LDA
-│
-├── README.md                       # Project overview and results summary
-├── .gitignore                      # Excludes models, large assets, and raw data
-
----
-
 ## 🧠 Final Model: Predicting Reception from Fan Discourse
 
 The final stage of this project builds a proof-of-concept model to predict whether a show will succeed (based on Rotten Tomatoes audience score) using only early fan discussion.
@@ -38,3 +21,18 @@ A simple logistic regression model trained on *Velma* and *The Bear S3* correctl
 **Future work** could include integrating VADER to provide an additional layer of emotional tone intensity.
 
 ---
+
+## 📁 Project Structure
+
+```plaintext
+streaming-sentiment-tracker/
+│
+├── Notebooks/
+│   ├── SSSmodel.ipynb              # Sentiment modeling, topic modeling, and forecasting
+│   └── ScrapingandSentiment.ipynb  # (Uploaded via GitHub Web) Reddit/YouTube scraping + LSTM labeling
+│
+├── Utils/
+│   └── cleaning.py                 # Custom text preprocessing functions for sentiment & LDA
+│
+├── README.md                       # Project overview and results summary
+├── .gitignore                      # Excludes models, large assets, and raw data
