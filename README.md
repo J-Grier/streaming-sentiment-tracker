@@ -55,8 +55,9 @@ the project created a multi-layered sentiment engine that clearly defines audien
 ---
 ## Author
 
-**John Grier** MS Data Science Candidate, Illinois TechGitHub: J-Grier
-
+**John Grier** 
+MS Data Science Candidate, Illinois Tech
+GitHub: J-Grier
 
 ## 📁 Project Structure
 
