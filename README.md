@@ -65,16 +65,7 @@ The analysis employed a layered modeling approach combining sentiment analysis a
 
 Bidirectional LSTMs process text forwards and backwards, effectively capturing nuanced sentiments often missed by simpler models:
 
-$$
-\begin{aligned}
-f_t &= \sigma(W_f \cdot [h_{t-1}, x_t] + b_f) \\
-i_t &= \sigma(W_i \cdot [h_{t-1}, x_t] + b_i) \\
-\tilde{c}_t &= \tanh(W_c \cdot [h_{t-1}, x_t] + b_c) \\
-c_t &= f_t \cdot c_{t-1} + i_t \cdot \tilde{c}_t \\
-o_t &= \sigma(W_o \cdot [h_{t-1}, x_t] + b_o) \\
-h_t &= o_t \cdot \tanh(c_t)
-\end{aligned}
-$$
+![Bidirectional LSTM Equations](assets/lstm_equations.png)
 
 This mathematical structure allows the model to dynamically interpret complex sentiments, making it particularly effective for analyzing nuanced and long-form user-generated content.
 
