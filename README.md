@@ -98,8 +98,9 @@ By combining sentiment analysis (VADER & LSTM) and topic modeling (LDA), this pr
 
 ## 🔖 References
 
+- Hochreiter, S., & Schmidhuber, J. (1997). [*Long Short-Term Memory*](https://pdfs.semanticscholar.org/0027/d572e43d0c120d59e81c228f2a17b3b05006.pdf). *Neural Computation, 9*(8), 1735–1780.
+  - This paper introduces Long Short-Term Memory (LSTM) networks, which effectively model sequential data and overcome the vanishing gradient problem common in traditional recurrent neural networks (RNNs), making them highly suitable for NLP and sentiment analysis tasks.
 - [VADER Sentiment Analysis](https://github.com/cjhutto/vaderSentiment)
-- [LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
 - [LDA Topic Modeling](https://radimrehurek.com/gensim/models/ldamodel.html)
 - [Reddit](https://reddit.com)
 - [YouTube](https://youtube.com)
